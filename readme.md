@@ -113,7 +113,7 @@ To get this API up and running, follow these steps:
 5. Run DB Migration:
 
    ```sh
-   pnpm db:generate && pnpm db:migrate
+   pnpm db:push
    ```
 
 6. Start the server:
