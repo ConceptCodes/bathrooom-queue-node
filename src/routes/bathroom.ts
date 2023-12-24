@@ -3,6 +3,8 @@ import BathroomController from "@controller/bathroom";
 import { IRequest } from "@/constants";
 import { authMiddleware, isRole } from "@/middlewares/auth";
 
+// NOTE: need to fix my Request types, but this works for now
+
 export default class BathroomRoute {
   public path = "/bathrooms";
   public router: Router = Router();
