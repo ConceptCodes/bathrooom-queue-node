@@ -1,12 +1,12 @@
 {
   "name": "bathroom-queue-node",
   "version": "1.0.0",
-  "description": "<a name=\"readme-top\"></a>",
+  "description": "Bathroom Queue Node.js API",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --config nodemon.json src/index.ts",
     "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
-    "start": "yarn build && node dist/index.js",
+    "start": "pnpm build && node dist/index.js",
     "build": "tsc -p . && npx tsc-alias",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "test": "mocha -r ts-node/register -r tsconfig-paths/register src/**/*.spec.ts",
@@ -14,7 +14,8 @@
     "prettier:fix": "prettier --write \"**/*.{js,ts}\"",
     "db:studio": "npx drizzle studio",
     "db:generate": "npx drizzle-kit generate:pg",
-    "db:migrate": "npx ts-node src/lib/db/migrate"
+    "db:migrate": "npx ts-node src/lib/db/migrate",
+    "db:push": "pnpm db:generate && pnpm db:migrate"
   },
   "keywords": [],
   "author": "",

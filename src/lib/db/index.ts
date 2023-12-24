@@ -15,4 +15,4 @@ export async function checkDatabaseHealth() {
   }
 }
 
-export const db = drizzle(client);
+export const db = drizzle(client, { logger: true });

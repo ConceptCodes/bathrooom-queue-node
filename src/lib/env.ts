@@ -17,6 +17,7 @@ export const env = createEnv({
     }),
     RESEND_API_KEY: z.string().optional(),
     PORT: z.coerce.number().default(8000),
+    COMPANY_EMAIL_ID: z.string().optional(),
   },
   runtimeEnv: process.env,
 });

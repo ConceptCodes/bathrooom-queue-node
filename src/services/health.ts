@@ -12,7 +12,7 @@ export default class HealthService {
   public async checkIntegrationsHealth(): Promise<IHealthStatus[]> {
     this.healthReport = await Promise.all([
       this.checkDatabaseHealth(),
-      this.checkEmailHealth(),
+      // this.checkEmailHealth(),
     ]);
     return this.healthReport;
   }

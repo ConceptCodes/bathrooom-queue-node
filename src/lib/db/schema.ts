@@ -29,6 +29,8 @@ export type User = typeof userTable.$inferSelect;
 export type NewUser = typeof userTable.$inferInsert;
 export const insertUserSchema = createInsertSchema(userTable);
 
+// ----------------------------------------------------------------------
+
 export const sessionTable = myPgTable("session", {
   id: serial("id").primaryKey(),
   userId: integer("user_id").references(() => userTable.id),
@@ -38,3 +40,33 @@ export const sessionTable = myPgTable("session", {
 });
 
 export type Session = typeof sessionTable.$inferSelect;
+
+// ----------------------------------------------------------------------
+
+export const bathroomTable = myPgTable("bathroom", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 256 }).notNull(),
+  location: varchar("location", { length: 256 }),
+  status: text("status", { enum: ["OPEN", "CLOSED", "UNAVAILABLE"] }),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export type Bathroom = typeof bathroomTable.$inferSelect;
+export type NewBathroom = typeof bathroomTable.$inferInsert;
+export const insertBathroomSchema = createInsertSchema(bathroomTable);
+
+// ----------------------------------------------------------------------
+
+export const queueTable = myPgTable("queue", {
+  id: serial("id").primaryKey(),
+  bathroomId: integer("bathroom_id").references(() => bathroomTable.id),
+  userId: integer("user_id").references(() => userTable.id),
+  position: integer("position"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export type Queue = typeof queueTable.$inferSelect;
+export type NewQueue = typeof queueTable.$inferInsert;
+export const insertQueueSchema = createInsertSchema(queueTable);
