@@ -39,5 +39,10 @@ export const registerSchema = insertUserSchema
     }
   );
 
+export const getByIdSchema = z.object({
+  id: z.number().positive(),
+});
+
 export type LoginSchema = z.infer<typeof loginSchema>;
 export type RegisterSchema = z.infer<typeof registerSchema>;
+
