@@ -54,20 +54,18 @@
 - ![Docker [Docker](https://www.docker.com/)](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 - ![Jest [Jest](https://jestjs.io/)](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
 - [Other dependencies or technologies]
-- HTMX
 
 ### Features
 
 - User Registration and Authentication
-- Admin's can onboard bathrooms
 - Users can join a bathroom queue
 - Users can leave a bathroom queue
 - Users can view their position in a bathroom queue
 - Users can view their bathroom queue history
+- Admin's can onboard bathrooms
 - [Checkout Wiki](https://github.com/conceptcodes/bathroom-queue-node/wiki) for more details
 
 ### What I Learned ?
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -125,10 +123,12 @@ To get this API up and running, follow these steps:
    If everything works as expected, you should see the following message in your terminal:
 
    ```sh
-   =====================================================
-   ================= ENV: local ========================
-   ==== Bathroom Queue Node ⏳ listening on PORT: 8000 =
-   =====================================================
+    ----------------------------------------------------
+    |                                                   |
+    |                    ENV: local                     |
+    | 🚽⏳ Bathroom Queue Node listening on PORT: 8000   |
+    |                                                   |
+    -----------------------------------------------------
    ```
 
 7. Make a request to our health check endpoint:
@@ -178,7 +178,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 [David Ojo] - [@conceptcodes] - [conceptcodes@gmail.com]
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
