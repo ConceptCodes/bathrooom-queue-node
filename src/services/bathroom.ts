@@ -6,6 +6,7 @@ import {
   DeleteEntityError,
   GetAllEntitiesError,
   GetEntityByIdError,
+  InternalError,
   UpdateEntityError,
 } from "@/exceptions";
 
@@ -27,10 +28,14 @@ export default class BathroomService {
         .from(bathroomTable)
         .where(eq(bathroomTable.id, id));
 
+      if (bathroom.length === 0) {
+        throw new GetEntityByIdError(`Bathroom with id ${id} does not exist.`);
+      }
+
       return bathroom[0];
     } catch (error) {
-      // @ts-expect-error
-      throw new GetEntityByIdError(error.message);
+      if (error instanceof GetEntityByIdError) throw error;
+      throw new InternalError(`Unable to get bathroom with id ${id}`);
     }
   }
 

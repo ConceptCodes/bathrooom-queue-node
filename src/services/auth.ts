@@ -5,11 +5,7 @@ import bcrypt from "bcryptjs";
 import { EntityNotFoundError, InvalidLoginCredentials } from "@/exceptions";
 import { db } from "@lib/db";
 import { User, sessionTable, userTable } from "@lib/db/schema";
-import type {
-  ForgotPasswordSchema,
-  LoginSchema,
-  RegisterSchema,
-} from "@/schemas";
+import type { LoginSchema, RegisterSchema } from "@/schemas";
 import { env } from "@lib/env";
 import { UserPayload } from "@/constants";
 
@@ -93,7 +89,7 @@ export default class AuthService {
     try {
       const { email, password, fullName } = data;
       const hashedPassword = await bcrypt.hash(password, 10);
-      
+
       const user = await db
         .insert(userTable)
         .values({
@@ -120,13 +116,6 @@ export default class AuthService {
     } catch (err) {
       throw err;
     }
-  }
-
-  public async forgotPassword(data: ForgotPasswordSchema): Promise<any> {
-    // TODO: implement forgotPassword
-    try {
-      console.log(data);
-    } catch (err) {}
   }
 
   private generateToken(data: UserPayload): Tokens {

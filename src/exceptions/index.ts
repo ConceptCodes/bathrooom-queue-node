@@ -52,10 +52,10 @@ export class ValidationError extends HttpException {
 }
 
 export class InternalError extends HttpException {
-  constructor() {
+  constructor(message?: string) {
     super(
       StatusCodes.INTERNAL_SERVER_ERROR,
-      "Something went wrong",
+      message || "Something went wrong",
       "INTERNAL_ERROR"
     );
   }
@@ -64,7 +64,7 @@ export class InternalError extends HttpException {
 export class CreateEntityError extends HttpException {
   constructor(message: Optional<string>) {
     super(
-      StatusCodes.INTERNAL_SERVER_ERROR,
+      StatusCodes.BAD_REQUEST,
       message || "Create entity error",
       "CREATE_ENTITY_ERROR"
     );
@@ -84,7 +84,7 @@ export class GetAllEntitiesError extends HttpException {
 export class GetEntityByIdError extends HttpException {
   constructor(message: Optional<string>) {
     super(
-      StatusCodes.INTERNAL_SERVER_ERROR,
+      StatusCodes.NOT_FOUND,
       message || "Get entity by id error",
       "GET_ENTITY_BY_ID_ERROR"
     );

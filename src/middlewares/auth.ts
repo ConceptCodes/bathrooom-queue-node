@@ -16,9 +16,7 @@ const authMiddleware = async (
       const _token: UserPayload = jwt_decode(payload, {
         header: true,
       });
-      if (_token) {
-        req.user = { id: _token.id, role: _token.role };
-      }
+      if (_token) req.user = _token;
     }
     next();
   } catch (error) {
