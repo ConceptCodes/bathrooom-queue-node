@@ -1,7 +1,7 @@
 version: '3'
 services:
   app: 
-    container_name: zoomies-api
+    container_name: bathroom-queue-api
     restart: always
     build: .
     env_file: .env.docker 
