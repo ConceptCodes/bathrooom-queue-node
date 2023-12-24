@@ -37,13 +37,17 @@ export class ExpiredToken extends HttpException {
 
 export class InvalidRole extends HttpException {
   constructor() {
-    super(StatusCodes.BAD_REQUEST, "Invalid role");
+    super(StatusCodes.BAD_REQUEST, "Invalid role", "INVALID_ROLE");
   }
 }
 
 export class ValidationError extends HttpException {
   constructor(message: Optional<string>) {
-    super(StatusCodes.BAD_REQUEST, message || "Validation error");
+    super(
+      StatusCodes.BAD_REQUEST,
+      message || "Validation error",
+      "VALIDATION_ERROR"
+    );
   }
 }
 
@@ -59,13 +63,21 @@ export class InternalError extends HttpException {
 
 export class CreateEntityError extends HttpException {
   constructor(message: Optional<string>) {
-    super(StatusCodes.INTERNAL_SERVER_ERROR, message || "Create entity error");
+    super(
+      StatusCodes.INTERNAL_SERVER_ERROR,
+      message || "Create entity error",
+      "CREATE_ENTITY_ERROR"
+    );
   }
 }
 
 export class GetAllEntitiesError extends HttpException {
   constructor(message: Optional<string>) {
-    super(StatusCodes.INTERNAL_SERVER_ERROR, message || "Get all entity error");
+    super(
+      StatusCodes.INTERNAL_SERVER_ERROR,
+      message || "Get all entity error",
+      "GET_ALL_ENTITIES_ERROR"
+    );
   }
 }
 
@@ -73,20 +85,29 @@ export class GetEntityByIdError extends HttpException {
   constructor(message: Optional<string>) {
     super(
       StatusCodes.INTERNAL_SERVER_ERROR,
-      message || "Get entity by id error"
+      message || "Get entity by id error",
+      "GET_ENTITY_BY_ID_ERROR"
     );
   }
 }
 
 export class UpdateEntityError extends HttpException {
   constructor(message: Optional<string>) {
-    super(StatusCodes.INTERNAL_SERVER_ERROR, message || "Update entity error");
+    super(
+      StatusCodes.INTERNAL_SERVER_ERROR,
+      message || "Update entity error",
+      "UPDATE_ENTITY_ERROR"
+    );
   }
 }
 
 export class DeleteEntityError extends HttpException {
   constructor(message: Optional<string>) {
-    super(StatusCodes.INTERNAL_SERVER_ERROR, message || "Delete entity error");
+    super(
+      StatusCodes.INTERNAL_SERVER_ERROR,
+      message || "Delete entity error",
+      "DELETE_ENTITY_ERROR"
+    );
   }
 }
 

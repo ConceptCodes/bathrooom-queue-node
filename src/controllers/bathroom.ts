@@ -12,11 +12,16 @@ export default class BathroomController {
   }
 
   public getBathrooms = async (
-    req: IRequest,
+    _: IRequest,
     res: Response,
     next: NextFunction
   ) => {
-    // Implementation for fetching bathrooms
+    try {
+      const bathrooms = await this.service.getAll();
+      res.status(StatusCodes.OK).json(bathrooms);
+    } catch (error) {
+      next(error);
+    }
   };
 
   public getBathroomById = async (
@@ -24,7 +29,13 @@ export default class BathroomController {
     res: Response,
     next: NextFunction
   ) => {
-    // Implementation for fetching a bathroom by ID
+    try {
+      const { id } = req.params;
+      const bathroom = await this.service.getById(Number(id));
+      res.status(StatusCodes.OK).json(bathroom);
+    } catch (error) {
+      next(error);
+    }
   };
 
   public createBathroom = async (
@@ -32,7 +43,16 @@ export default class BathroomController {
     res: Response,
     next: NextFunction
   ) => {
-    // Implementation for creating a new bathroom
+    try {
+      const { name, location } = req.body;
+      const bathroom = await this.service.create({
+        name,
+        location,
+      });
+      res.status(StatusCodes.CREATED).json(bathroom);
+    } catch (error) {
+      next(error);
+    }
   };
 
   public updateBathroom = async (
@@ -40,7 +60,16 @@ export default class BathroomController {
     res: Response,
     next: NextFunction
   ) => {
-    // Implementation for updating an existing bathroom
+    try {
+      const { name, location, id } = req.body;
+      const bathroom = await this.service.update(Number(id), {
+        name,
+        location,
+      });
+      res.status(StatusCodes.OK).json(bathroom);
+    } catch (error) {
+      next(error);
+    }
   };
 
   public deleteBathroom = async (
@@ -48,6 +77,12 @@ export default class BathroomController {
     res: Response,
     next: NextFunction
   ) => {
-    // Implementation for deleting a bathroom
+    try {
+      const { id } = req.params;
+      await this.service.delete(Number(id));
+      res.status(StatusCodes.NO_CONTENT).json();
+    } catch (error) {
+      next(error);
+    }
   };
 }

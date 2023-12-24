@@ -11,6 +11,7 @@ import traceIdMiddleware from "@middleware/trace";
 import { authMiddleware } from "@middleware/auth";
 import { env } from "@lib/env";
 import { Routes } from "@/constants";
+import { printBox } from "./utils";
 
 class App {
   public app: any;
@@ -30,12 +31,10 @@ class App {
 
   public listen(): void {
     this.app.listen(this.port as number, () => {
-      console.info("=====================================================");
-      console.info(`================= ENV: ${this.env} ==================`);
-      console.info(
-        `===== 🚽⏳ Bathroom Queue Node listening on PORT: ${this.port} ===========`
-      );
-      console.info("=====================================================");
+      printBox([
+        `ENV: ${this.env}`,
+        `🚽⏳ Bathroom Queue Node listening on PORT: ${this.port}`,
+      ]);
     });
   }
 
